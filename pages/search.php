@@ -139,7 +139,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['search'])) {
 
             <?php if (!empty($results)): ?>
                 <div class="search-results">
-                    <h2>Результаты поиска (найдено: <?php echo count($results); ?>)</h2>
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                        <h2 style="margin: 0;">Результаты поиска (найдено: <?php echo count($results); ?>)</h2>
+                        <a href="../reports/generate_pdf.php?search=1&search_term=<?php echo urlencode($searchTerm); ?>&search_type=<?php echo urlencode($searchType); ?>" class="btn-primary" style="text-decoration: none; padding: 8px 15px; background: #28a745; color: white; border-radius: 4px;">📄 Экспорт в PDF</a>
+                    </div>
                     <table>
                         <thead>
                             <tr>

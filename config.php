@@ -1,7 +1,7 @@
 <?php
 // Конфигурация подключения к базе данных
 define('DB_HOST', 'localhost');
-define('DB_USER', 'root');
+define('DB_USER', 'dbgranit');
 define('DB_PASS', '');
 define('DB_NAME', 'ритуальные_услуги');
 define('DB_CHARSET', 'utf8mb4');

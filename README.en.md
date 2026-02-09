@@ -17,6 +17,7 @@ Funeral Services Management System is a PHP web application designed to manage u
 - 🛒 **Order Items** - manage items in orders
 - 🔍 **Search** - universal search across all system data
 - 📊 **Database Seeding** - scripts for automatic test data filling
+- 📄 **PDF Export** - generate PDF reports for all tables and search results
 
 ## 🛠️ Technologies
 
@@ -34,12 +35,13 @@ DBGranit/
 │   └── css/
 │       └── style.css          # Application styles
 ├── bat/
-│   ├── create_db.bat          # Database creation script
-│   ├── fill_db.bat            # Database seeding script
 │   └── start.bat              # PHP server startup
 ├── database/
 │   ├── database.sql           # Database creation SQL script
 │   └── mock_data.sql          # Test data
+├── includes/
+│   ├── PDFReportGenerator.php # PDF generation class
+│   └── tcpdf/                 # TCPDF library
 ├── pages/
 │   ├── users.php              # User management
 │   ├── categories.php         # Category management
@@ -47,12 +49,14 @@ DBGranit/
 │   ├── orders.php             # Order management
 │   ├── order_items.php        # Order items
 │   └── search.php             # Data search
+├── reports/
+│   └── generate_pdf.php       # PDF report generation
 ├── scripts/
-│   ├── create_database.php    # Database creation
-│   ├── fill_database.php      # Database seeding
+│   ├── fill_database.php      # Database seeding with test data
 │   └── test_connection.php    # Connection test
 ├── config.php                 # Database configuration
 ├── config.example.php         # Configuration example
+├── setup_database.php         # Web interface for database setup
 ├── index.php                  # Main page
 └── README.md                  # Documentation
 ```
@@ -85,30 +89,52 @@ cd DBGranit
 
 ### Step 2: Database Setup
 
+**Option A: Via Web Interface (recommended)**
+
+1. Start PHP server (see Step 4)
+2. Open in browser: `http://localhost:8000/setup_database.php`
+3. Enter MySQL connection details and click "Create Database"
+4. Database and all tables will be created automatically
+
+**Option B: Via Command Line**
+
 1. Start MySQL server
-2. Create database by running the script:
+2. Create database:
    ```bash
    mysql -u root -p < database/database.sql
    ```
    Or import via phpMyAdmin/MySQL Workbench
 
-3. (Optional) Fill database with test data:
-   ```bash
-   mysql -u root -p ритуальные_услуги < database/mock_data.sql
-   ```
+3. (Optional) Fill database with test data via web interface:
+   - Open: `http://localhost:8000/scripts/fill_database.php`
+   - Click "Fill Database"
 
-### Step 3: Configuration
+### Step 3: Install TCPDF (for PDF export feature)
+
+For PDF export functionality, install TCPDF library:
+
+**Via Composer (recommended):**
+```bash
+composer install
+```
+
+**Or manually:**
+See detailed instructions in [INSTALL_PDF.md](INSTALL_PDF.md)
+
+### Step 4: Configuration
 
 Copy `config.example.php` to `config.php` and update connection parameters if needed:
 
 ```php
 define('DB_HOST', 'localhost');
-define('DB_USER', 'root');
-define('DB_PASS', '');
+define('DB_USER', 'root');  // or 'dbgranit' if you created a separate user
+define('DB_PASS', '');      // enter password if it's set
 define('DB_NAME', 'ритуальные_услуги');
 ```
 
-### Step 4: Run Application
+**Note:** If you use the web interface `setup_database.php`, it will automatically update `config.php` when creating the database.
+
+### Step 5: Run Application
 
 #### Option A: Built-in PHP Server
 
@@ -137,7 +163,7 @@ php -S localhost:8000
 2. Select domain in OpenServer
 3. Open selected domain in browser
 
-### Step 5: Open in Browser
+### Step 6: Open in Browser
 
 Navigate to: `http://localhost:8000` (or your web server address)
 
@@ -185,6 +211,14 @@ The main page (`index.php`) provides navigation to all system sections and quick
 - Universal search across all tables
 - Filter by data type
 - Navigate to edit found records
+- Export search results to PDF
+
+### PDF Export
+
+- Generate PDF reports for all tables (users, categories, products, orders, order items)
+- Export search results to PDF
+- Beautiful formatting with headers, tables, and metadata
+- Requires TCPDF library installation (see [INSTALL_PDF.md](INSTALL_PDF.md))
 
 ## 🔒 Security
 
@@ -208,7 +242,8 @@ The main page (`index.php`) provides navigation to all system sections and quick
 
 ### Database Not Found
 
-- Run SQL script `database/database.sql`
+- Use web interface: `http://localhost:8000/setup_database.php`
+- Or run SQL script `database/database.sql` manually
 - Check database name in `config.php`
 
 ### Encoding Issues

@@ -21,6 +21,7 @@ desktop.ini
 # PHP
 vendor/
 composer.lock
+composer.phar
 .env
 
 # База данных (если есть дампы с реальными данными)
