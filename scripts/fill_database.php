@@ -53,7 +53,7 @@ try {
     echo "Начинаем заполнение базы данных...\n\n";
     
     // Читаем SQL файл
-    $sql = file_get_contents(__DIR__ . '/mock_data.sql');
+    $sql = file_get_contents(__DIR__ . '/../database/mock_data.sql');
     
     if ($sql === false) {
         die("Ошибка: Не удалось прочитать файл mock_data.sql\n");

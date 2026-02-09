@@ -148,7 +148,10 @@ $orders = $stmt->fetchAll();
             </div>
 
             <div class="table-section">
-                <h2>Список заказов</h2>
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                    <h2 style="margin: 0;">Список заказов</h2>
+                    <a href="../reports/generate_pdf.php?table=orders" class="btn-primary" style="text-decoration: none; padding: 8px 15px; background: #28a745; color: white; border-radius: 4px;">📄 Экспорт в PDF</a>
+                </div>
                 <table>
                     <thead>
                         <tr>
