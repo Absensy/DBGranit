@@ -131,7 +131,7 @@ $orderItems = $stmt->fetchAll();
                                 <option value="<?php echo $product['id_товара']; ?>" 
                                     data-price="<?php echo $product['цена']; ?>"
                                     <?php echo ($editItem && $editItem['id_товара'] == $product['id_товара']) ? 'selected' : ''; ?>>
-                                    <?php echo htmlspecialchars($product['название']); ?> (<?php echo number_format($product['цена'], 2); ?> ₽)
+                                    <?php echo htmlspecialchars($product['название']); ?> (<?php echo number_format($product['цена'], 2); ?> BYN)
                                 </option>
                             <?php endforeach; ?>
                         </select>
@@ -157,7 +157,7 @@ $orderItems = $stmt->fetchAll();
             <div class="table-section">
                 <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
                     <h2 style="margin: 0;">Список товаров в заказах</h2>
-                    <a href="../reports/generate_pdf.php?table=order_items" class="btn-primary" style="text-decoration: none; padding: 8px 15px; background: #28a745; color: white; border-radius: 4px;">📄 Экспорт в PDF</a>
+                    <a href="../reports/generate_pdf.php?table=order_items" class="btn-primary" style="text-decoration: none; padding: 8px 15px; background: #28a745; color: white; border-radius: 4px;">Экспорт в PDF</a>
                 </div>
                 <table>
                     <thead>
@@ -184,9 +184,9 @@ $orderItems = $stmt->fetchAll();
                                     <td>Заказ #<?php echo $item['id_заказа']; ?></td>
                                     <td><?php echo htmlspecialchars($item['товар_название'] ?? '-'); ?></td>
                                     <td><?php echo $item['количество']; ?></td>
-                                    <td><?php echo number_format($item['цена_на_момент_покупки'], 2); ?> ₽</td>
-                                    <td><?php echo $item['текущая_цена'] ? number_format($item['текущая_цена'], 2) . ' ₽' : '-'; ?></td>
-                                    <td><?php echo number_format($item['количество'] * $item['цена_на_момент_покупки'], 2); ?> ₽</td>
+                                    <td><?php echo number_format($item['цена_на_момент_покупки'], 2); ?> BYN</td>
+                                    <td><?php echo $item['текущая_цена'] ? number_format($item['текущая_цена'], 2) . ' BYN' : '-'; ?></td>
+                                    <td><?php echo number_format($item['количество'] * $item['цена_на_момент_покупки'], 2); ?> BYN</td>
                                     <td class="actions">
                                         <a href="?edit=<?php echo $item['id_товара_в_заказе']; ?>" class="btn-edit">Изменить</a>
                                         <a href="?delete=<?php echo $item['id_товара_в_заказе']; ?>" class="btn-danger" onclick="return confirm('Вы уверены?')">Удалить</a>
