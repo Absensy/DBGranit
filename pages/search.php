@@ -49,7 +49,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['search'])) {
             $stmt = $pdo->prepare("
                 SELECT 'товар' as тип, id_товара as id, 
                        название, 
-                       CONCAT('Цена: ', цена, ' ₽') as дополнительно, 
+                       CONCAT('Цена: ', цена, ' BYN') as дополнительно, 
                        CONCAT('На складе: ', количество_на_складе) as дополнительно2
                 FROM товары 
                 WHERE название LIKE ? OR описание LIKE ?
@@ -66,7 +66,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['search'])) {
                 SELECT 'заказ' as тип, з.id_заказа as id, 
                        CONCAT('Заказ #', з.id_заказа) as название, 
                        CONCAT('Пользователь: ', п.имя, ' ', п.фамилия) as дополнительно, 
-                       CONCAT('Статус: ', з.статус, ', Сумма: ', з.общая_сумма, ' ₽') as дополнительно2
+                       CONCAT('Статус: ', з.статус, ', Сумма: ', з.общая_сумма, ' BYN') as дополнительно2
                 FROM заказы з
                 LEFT JOIN пользователи п ON з.id_пользователя = п.id_пользователя
                 WHERE з.статус LIKE ? OR CAST(з.id_заказа AS CHAR) LIKE ?
@@ -83,7 +83,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['search'])) {
                 SELECT 'товар_в_заказе' as тип, твз.id_товара_в_заказе as id, 
                        CONCAT('Товар в заказе #', твз.id_заказа) as название, 
                        т.название as дополнительно, 
-                       CONCAT('Количество: ', твз.количество, ', Цена: ', твз.цена_на_момент_покупки, ' ₽') as дополнительно2
+                       CONCAT('Количество: ', твз.количество, ', Цена: ', твз.цена_на_момент_покупки, ' BYN') as дополнительно2
                 FROM товары_в_заказе твз
                 LEFT JOIN товары т ON твз.id_товара = т.id_товара
                 WHERE т.название LIKE ? OR CAST(твз.id_заказа AS CHAR) LIKE ?
@@ -141,7 +141,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['search'])) {
                 <div class="search-results">
                     <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
                         <h2 style="margin: 0;">Результаты поиска (найдено: <?php echo count($results); ?>)</h2>
-                        <a href="../reports/generate_pdf.php?search=1&search_term=<?php echo urlencode($searchTerm); ?>&search_type=<?php echo urlencode($searchType); ?>" class="btn-primary" style="text-decoration: none; padding: 8px 15px; background: #28a745; color: white; border-radius: 4px;">📄 Экспорт в PDF</a>
+                        <a href="../reports/generate_pdf.php?search=1&search_term=<?php echo urlencode($searchTerm); ?>&search_type=<?php echo urlencode($searchType); ?>" class="btn-primary" style="text-decoration: none; padding: 8px 15px; background: #28a745; color: white; border-radius: 4px;">Экспорт в PDF</a>
                     </div>
                     <table>
                         <thead>
@@ -159,11 +159,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['search'])) {
                                     <td>
                                         <?php
                                         $typeLabels = [
-                                            'пользователь' => '👤 Пользователь',
-                                            'категория' => '📦 Категория',
-                                            'товар' => '🛍️ Товар',
-                                            'заказ' => '📋 Заказ',
-                                            'товар_в_заказе' => '🛒 Товар в заказе'
+                                            'пользователь' => 'Пользователь',
+                                            'категория' => 'Категория',
+                                            'товар' => 'Товар',
+                                            'заказ' => 'Заказ',
+                                            'товар_в_заказе' => 'Товар в заказе'
                                         ];
                                         echo $typeLabels[$result['тип']] ?? $result['тип'];
                                         ?>

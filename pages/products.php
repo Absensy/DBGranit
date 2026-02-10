@@ -158,7 +158,7 @@ $products = $stmt->fetchAll();
             <div class="table-section">
                 <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
                     <h2 style="margin: 0;">Список товаров</h2>
-                    <a href="../reports/generate_pdf.php?table=products" class="btn-primary" style="text-decoration: none; padding: 8px 15px; background: #28a745; color: white; border-radius: 4px;">📄 Экспорт в PDF</a>
+                    <a href="../reports/generate_pdf.php?table=products" class="btn-primary" style="text-decoration: none; padding: 8px 15px; background: #28a745; color: white; border-radius: 4px;">Экспорт в PDF</a>
                 </div>
                 <table>
                     <thead>
@@ -184,7 +184,7 @@ $products = $stmt->fetchAll();
                                     <td><?php echo $product['id_товара']; ?></td>
                                     <td><?php echo htmlspecialchars($product['название']); ?></td>
                                     <td><?php echo htmlspecialchars(substr($product['описание'] ?? '-', 0, 50)) . (strlen($product['описание'] ?? '') > 50 ? '...' : ''); ?></td>
-                                    <td><?php echo number_format($product['цена'], 2); ?> ₽</td>
+                                    <td><?php echo number_format($product['цена'], 2); ?> BYN</td>
                                     <td><?php echo $product['количество_на_складе']; ?></td>
                                     <td><?php echo htmlspecialchars($product['категория_название'] ?? '-'); ?></td>
                                     <td><?php echo $product['оплата_онлайн'] ? 'Да' : 'Нет'; ?></td>

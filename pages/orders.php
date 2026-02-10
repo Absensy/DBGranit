@@ -150,7 +150,7 @@ $orders = $stmt->fetchAll();
             <div class="table-section">
                 <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
                     <h2 style="margin: 0;">Список заказов</h2>
-                    <a href="../reports/generate_pdf.php?table=orders" class="btn-primary" style="text-decoration: none; padding: 8px 15px; background: #28a745; color: white; border-radius: 4px;">📄 Экспорт в PDF</a>
+                    <a href="../reports/generate_pdf.php?table=orders" class="btn-primary" style="text-decoration: none; padding: 8px 15px; background: #28a745; color: white; border-radius: 4px;">Экспорт в PDF</a>
                 </div>
                 <table>
                     <thead>
@@ -176,7 +176,7 @@ $orders = $stmt->fetchAll();
                                     <td><?php echo $order['имя'] ? htmlspecialchars($order['фамилия'] . ' ' . $order['имя']) : '-'; ?></td>
                                     <td><?php echo $order['дата_заказа']; ?></td>
                                     <td><?php echo htmlspecialchars($order['статус']); ?></td>
-                                    <td><?php echo $order['общая_сумма'] ? number_format($order['общая_сумма'], 2) . ' ₽' : '-'; ?></td>
+                                    <td><?php echo $order['общая_сумма'] ? number_format($order['общая_сумма'], 2) . ' BYN' : '-'; ?></td>
                                     <td><?php echo htmlspecialchars($order['способ_оплаты']); ?></td>
                                     <td class="actions">
                                         <a href="?edit=<?php echo $order['id_заказа']; ?>" class="btn-edit">Изменить</a>

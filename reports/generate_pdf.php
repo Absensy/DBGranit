@@ -118,7 +118,7 @@ function generateProductsPDF($pdo) {
             $product['id_товара'],
             mb_substr($product['название'], 0, 25),
             $product['категория_название'] ?? '-',
-            number_format($product['цена'], 2, '.', ' ') . ' ₽',
+            number_format($product['цена'], 2, '.', ' ') . ' BYN',
             $product['количество_на_складе'],
             $product['оплата_онлайн'] ? 'Да' : 'Нет'
         ];
@@ -158,7 +158,7 @@ function generateOrdersPDF($pdo) {
             mb_substr($userName, 0, 20),
             $order['дата_заказа'],
             $order['статус'],
-            $order['общая_сумма'] ? number_format($order['общая_сумма'], 2, '.', ' ') . ' ₽' : '-',
+            $order['общая_сумма'] ? number_format($order['общая_сумма'], 2, '.', ' ') . ' BYN' : '-',
             $order['способ_оплаты']
         ];
     }
@@ -194,7 +194,7 @@ function generateOrderItemsPDF($pdo) {
             $item['id_заказа'],
             mb_substr($item['товар_название'] ?? '-', 0, 30),
             $item['количество'],
-            number_format($item['цена_на_момент_покупки'], 2, '.', ' ') . ' ₽'
+            number_format($item['цена_на_момент_покупки'], 2, '.', ' ') . ' BYN'
         ];
     }
     
@@ -245,7 +245,7 @@ function generateSearchPDF($pdo, $searchTerm, $searchType) {
         $stmt = $pdo->prepare("
             SELECT 'товар' as тип, id_товара as id, 
                    название, 
-                   CONCAT('Цена: ', цена, ' ₽') as дополнительно, 
+                   CONCAT('Цена: ', цена, ' BYN') as дополнительно, 
                    CONCAT('На складе: ', количество_на_складе) as дополнительно2
             FROM товары 
             WHERE название LIKE ? OR описание LIKE ?
@@ -262,7 +262,7 @@ function generateSearchPDF($pdo, $searchTerm, $searchType) {
             SELECT 'заказ' as тип, з.id_заказа as id, 
                    CONCAT('Заказ #', з.id_заказа) as название, 
                    CONCAT('Пользователь: ', п.имя, ' ', п.фамилия) as дополнительно, 
-                   CONCAT('Статус: ', з.статус, ', Сумма: ', з.общая_сумма, ' ₽') as дополнительно2
+                   CONCAT('Статус: ', з.статус, ', Сумма: ', з.общая_сумма, ' BYN') as дополнительно2
             FROM заказы з
             LEFT JOIN пользователи п ON з.id_пользователя = п.id_пользователя
             WHERE з.статус LIKE ? OR CAST(з.id_заказа AS CHAR) LIKE ?
@@ -279,7 +279,7 @@ function generateSearchPDF($pdo, $searchTerm, $searchType) {
             SELECT 'товар_в_заказе' as тип, твз.id_товара_в_заказе as id, 
                    CONCAT('Товар в заказе #', твз.id_заказа) as название, 
                    т.название as дополнительно, 
-                   CONCAT('Количество: ', твз.количество, ', Цена: ', твз.цена_на_момент_покупки, ' ₽') as дополнительно2
+                   CONCAT('Количество: ', твз.количество, ', Цена: ', твз.цена_на_момент_покупки, ' BYN') as дополнительно2
             FROM товары_в_заказе твз
             LEFT JOIN товары т ON твз.id_товара = т.id_товара
             WHERE т.название LIKE ? OR CAST(твз.id_заказа AS CHAR) LIKE ?
