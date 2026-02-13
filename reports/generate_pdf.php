@@ -56,13 +56,13 @@ function generateUsersPDF($pdo) {
             $user['id_пользователя'],
             $user['имя'],
             $user['фамилия'],
-            $user['email'],
+            mb_substr($user['email'], 0, 20),
             $user['телефон'] ?? '-',
             $user['дата_создания']
         ];
     }
     
-    $colWidths = [15, 30, 30, 50, 30, 25];
+    $colWidths = [12, 25, 28, 45, 35, 35];
     $pdf->addTable($headers, $data, $colWidths);
     
     $pdf->output('users_report.pdf', 'I');

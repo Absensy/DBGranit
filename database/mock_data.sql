@@ -14,14 +14,14 @@ USE `ритуальные_услуги`;
 -- Заполнение таблицы пользователи
 -- -----------------------------------------------------
 INSERT INTO `пользователи` (`имя`, `фамилия`, `email`, `пароль`, `телефон`, `дата_создания`) VALUES
-('Иван', 'Петров', 'ivan.petrov@mail.ru', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', '+7 (999) 123-45-67', '2024-01-15 10:30:00'),
-('Мария', 'Сидорова', 'maria.sidorova@mail.ru', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', '+7 (999) 234-56-78', '2024-01-16 14:20:00'),
-('Александр', 'Иванов', 'alex.ivanov@mail.ru', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', '+7 (999) 345-67-89', '2024-01-17 09:15:00'),
-('Елена', 'Козлова', 'elena.kozlova@mail.ru', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', '+7 (999) 456-78-90', '2024-01-18 16:45:00'),
-('Дмитрий', 'Смирнов', 'dmitry.smirnov@mail.ru', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', '+7 (999) 567-89-01', '2024-01-19 11:00:00'),
-('Ольга', 'Волкова', 'olga.volkova@mail.ru', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', '+7 (999) 678-90-12', '2024-01-20 13:30:00'),
-('Сергей', 'Новиков', 'sergey.novikov@mail.ru', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', '+7 (999) 789-01-23', '2024-01-21 15:20:00'),
-('Анна', 'Морозова', 'anna.morozova@mail.ru', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', '+7 (999) 890-12-34', '2024-01-22 10:10:00');
+('Иван', 'Петров', 'ivan.petrov@mail.ru', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', '+375 (29) 123-45-67', '2024-01-15 10:30:00'),
+('Мария', 'Сидорова', 'maria.sidorova@mail.ru', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', '+375 (33) 234-56-78', '2024-01-16 14:20:00'),
+('Александр', 'Иванов', 'alex.ivanov@mail.ru', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', '+375 (29) 345-67-89', '2024-01-17 09:15:00'),
+('Елена', 'Козлова', 'elena.kozlova@mail.ru', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', '+375 (44) 456-78-90', '2024-01-18 16:45:00'),
+('Дмитрий', 'Смирнов', 'dmitry.smirnov@mail.ru', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', '+375 (25) 567-89-01', '2024-01-19 11:00:00'),
+('Ольга', 'Волкова', 'olga.volkova@mail.ru', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', '+375 (29) 678-90-12', '2024-01-20 13:30:00'),
+('Сергей', 'Новиков', 'sergey.novikov@mail.ru', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', '+375 (33) 789-01-23', '2024-01-21 15:20:00'),
+('Анна', 'Морозова', 'anna.morozova@mail.ru', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', '+375 (44) 890-12-34', '2024-01-22 10:10:00');
 
 -- -----------------------------------------------------
 -- Заполнение таблицы категории_товаров
